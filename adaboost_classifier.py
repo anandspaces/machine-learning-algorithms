@@ -15,11 +15,11 @@ y = data.target  # Target labels
 # Split the dataset into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# Initialize a Decision Tree as the base estimator for AdaBoost
-base_estimator = DecisionTreeClassifier(max_depth=1)
+# Initialize a Decision Tree as the estimator for AdaBoost
+estimator = DecisionTreeClassifier(max_depth=1)
 
 # Initialize the AdaBoost classifier
-adaboost = AdaBoostClassifier(base_estimator=base_estimator, n_estimators=50, random_state=42)
+adaboost = AdaBoostClassifier(estimator=estimator, n_estimators=50, algorithm="SAMME", random_state=42)
 
 # Train the AdaBoost model
 adaboost.fit(X_train, y_train)
