@@ -27,9 +27,10 @@ mca_result = mca.fit(df)
 # Transform the data
 mca_transformed = mca.transform(df)
 
-# Print the explained variance
-print("\nExplained Variance:")
-print(mca.explained_inertia_)
+# Extract explained inertia from the model's eigenvalues
+explained_inertia = mca.eigenvalues_ / mca.eigenvalues_.sum()
+print("\nExplained Variance (Inertia):")
+print(explained_inertia)
 
 # Create a DataFrame for visualization
 mca_df = pd.DataFrame(mca_transformed, columns=['Dim1', 'Dim2'])
